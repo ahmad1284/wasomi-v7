@@ -30,3 +30,9 @@ codev/.update-hashes.json
 .builders/
 .agent/
 .claude
+
+# Local Environment Files
+.env.local
+.env.production
+.env
+!.env.example
