@@ -1,0 +1,7 @@
+You can log in to the current prototype using the following credentials (any password will work, as it's currently using a local storage mock):
+
+
+Student: student@suza.ac.tz
+Supervisor: supervisor@suza.ac.tz
+Publisher: staff@wasomi.org
+Admin: admin@wasomi.org

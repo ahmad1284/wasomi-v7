@@ -1,0 +1,7 @@
+{
+  "shell": {
+    "architect": "gemini --yolo",
+    "builder": "gemini --yolo",
+    "shell": "bash"
+  }
+}

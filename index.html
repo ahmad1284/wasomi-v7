@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wasomi Scholars - Research Repository</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blue: {
+                50: '#E5F6FC',
+                100: '#CCEAF6',
+                200: '#99D5ED',
+                300: '#66C0E4',
+                400: '#33ABDB',
+                500: '#00A3DD', // Primary Brand Blue
+                600: '#0092C7',
+                700: '#00729B',
+                800: '#00526E',
+                900: '#003142',
+                950: '#001921',
+              },
+            },
+          },
+        },
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #f1f1f1; }
+      ::-webkit-scrollbar-thumb { background: #00A3DD; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #0082B1; }
+      
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #d1d5db; }
+
+      /* Reset Force Checkbox Appearance */
+      input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: #fff !important;
+        margin: 0;
+        font: inherit;
+        color: #00A3DD;
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 2.5px solid #d1d5db;
+        border-radius: 0.375rem;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+        flex-shrink: 0; /* Prevent squishing in flex containers */
+      }
+
+      input[type="checkbox"]::before {
+        content: "";
+        width: 0.65rem;
+        height: 0.65rem;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em #00A3DD;
+        transform-origin: center;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      }
+
+      input[type="checkbox"]:checked {
+        border-color: #00A3DD;
+      }
+
+      input[type="checkbox"]:checked::before {
+        transform: scale(1);
+      }
+
+      input[type="checkbox"]:focus {
+        outline: 2px solid rgba(0, 163, 221, 0.3);
+        outline-offset: 2px;
+      }
+
+      input[type="checkbox"]:hover {
+        border-color: #00A3DD;
+      }
+
+      /* Global Input Polish - Pure White */
+      input, select, textarea {
+        background-color: #fff !important;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.48.1",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-50 text-gray-900">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
