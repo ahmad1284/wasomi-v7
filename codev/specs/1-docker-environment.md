@@ -6,24 +6,28 @@
 - **Created**: 2026-03-08
 
 ## Problem Statement
-The development environment needs to be fully containerized and include local infrastructure for email testing and file storage to ensure a production-parity MVP.
+The development environment needs to be fully containerized and include local infrastructure for email testing and file storage to ensure a production-parity MVP with robust data persistence.
 
 ## Desired State
 A containerized stack using Docker Compose as the single source of truth for all environments.
+- **Environment Delineation**:
+  - `Base`: `pocketbase` (API/Admin), `app` (Vite).
+  - `Dev Profile`: `mailpit` (SMTP), `minio` (S3). Enabled via `docker compose --profile dev up`.
 - **Services**: 
-  - `pocketbase`: Data, auth, and file metadata.
-  - `mailpit`: Fake SMTP server (port 1025) and Web UI (port 8025) for local email testing.
-  - `minio`: S3-compatible storage (port 9000/9001) for actual file persistence.
-  - `app`: Vite dev server (port 5173).
-- **Environment Strategy**: Use `.env.local` for local secrets and `.env.production` for prod secrets. Use `.env.example` as a template.
-- **Profiles**: Use `docker compose --profile dev up` to include Mailpit and MinIO during development.
+  - `pocketbase`: Data and auth. Uses named volume `pb_data` for persistence.
+  - `mailpit`: SMTP server (`127.0.0.1:1025`) and Web UI (`127.0.0.1:8025`).
+  - `minio`: S3 storage. Uses named volume `minio_data`. Requires root credentials and a `research-docs` bucket.
+- **Security**: 
+  - Local-only UI services (Mailpit, MinIO Console) MUST bind to `127.0.0.1`.
+  - `.env.production` MUST NOT be committed to git.
+  - `.env.example` must contain templates for all infrastructure credentials.
 
 ## Success Criteria
-- [ ] `docker-compose.yml` includes `pocketbase`, `mailpit`, and `minio`.
-- [ ] `mailpit` Web UI is accessible at `localhost:8025`.
-- [ ] `minio` Console is accessible at `localhost:9001`.
-- [ ] App resolves SMTP to `mailpit:1025` with no auth in dev.
-- [ ] Files are stored in MinIO and metadata in PocketBase.
+- [ ] `docker-compose.yml` uses named volumes for `pocketbase` and `minio`.
+- [ ] Mailpit and MinIO UI are restricted to `localhost` via explicit IP binding.
+- [ ] A `research-docs` bucket is automatically initialized on MinIO startup.
+- [ ] `.env.production` is present in `.gitignore`.
 
 ## References
 - [Refactor Prompt 3](../../specs/prompt3.md)
+- [Codex Review Findings](../../consult_codex.log)
