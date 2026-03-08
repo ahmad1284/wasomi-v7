@@ -23,10 +23,10 @@ A containerized stack using Docker Compose as the single source of truth for all
   - `.env.example` must contain templates for all infrastructure credentials.
 
 ## Success Criteria
-- [ ] `docker-compose.yml` uses named volumes for `pocketbase` and `minio`.
-- [ ] Mailpit and MinIO UI are restricted to `localhost` via explicit IP binding.
-- [ ] A `research-docs` bucket is automatically initialized on MinIO startup.
-- [ ] `.env.production` is present in `.gitignore`.
+- [x] `docker-compose.yml` uses named volumes for `pocketbase` and `minio`.
+- [x] Mailpit and MinIO UI are restricted to `localhost` via explicit IP binding.
+- [x] A `research-docs` bucket is automatically initialized on MinIO startup.
+- [x] `.env.production` is present in `.gitignore`.
 
 ## References
 - [Refactor Prompt 3](../../specs/prompt3.md)

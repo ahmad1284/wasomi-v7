@@ -15,8 +15,8 @@ This plan describes the steps to implement the foundational containerized enviro
 ### Infrastructure
 1.  **[NEW] docker-compose.yml**:
     - **Base Stack**:
-      - `pocketbase`: API service. Volume: `pb_data:/pb_data`. Port: `8090:8080`.
-      - `app`: Vite React service using bind mount for source code and local `.env`. Port: `5173:5173`.
+      - `pocketbase`: API service. Volume: `pb_data:/pb_data`. Port: `8090:8090`.
+      - `app`: Vite React service using bind mount for source code and optional local `.env`. Port: `5174:5173`.
     - **Dev Profile** (`profiles: ["dev"]`):
       - `mailpit`: SMTP (`127.0.0.1:1025:1025`) and Web UI (`127.0.0.1:8025:8025`).
       - `minio`: S3-compatible service. Volume: `minio_data:/data`. Console (`127.0.0.1:9001:9001`). API (`127.0.0.1:9000:9000`).

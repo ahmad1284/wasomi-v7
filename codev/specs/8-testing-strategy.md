@@ -19,7 +19,7 @@ An integration test suite that runs against a real PocketBase, MinIO, and Mailpi
 - **Storage Assertions**: Verify that uploaded files are correctly stored in MinIO and accessible.
 
 ## Success Criteria
-- [ ] `scripts/smoke-check.sh` exists and passes.
+- [x] `scripts/smoke-check.sh` exists and passes.
 - [ ] Integration tests cover the full research lifecycle (Student -> Supervisor -> Admin).
 - [ ] Email delivery is verified via Mailpit REST API.
 - [ ] File accessibility is verified via MinIO storage checks.
