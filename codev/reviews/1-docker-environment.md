@@ -10,7 +10,7 @@ The foundational containerized stack for Wasomi Scholars has been implemented fo
 - **Automation**: Ephemeral `mc` container handles idempotent bucket creation.
 
 ## Verification Results
-- **[scripts/smoke-check.sh](file:///home/ahmad/lab/antigravity/wasomi-v7-main/scripts/smoke-check.sh)**: Passed all connectivity checks.
+- **scripts/smoke-check.sh**: Passed all connectivity and security checks.
 - **Docker Compose**: Validated config for profile and dependency logic.
 - **Port Conflict**: Resolved an initial conflict on port 5173 by moving the app to 5174.
 
