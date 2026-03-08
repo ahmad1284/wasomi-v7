@@ -43,12 +43,15 @@ fi
 # 4. Security Bindings Check (Preventing Public Exposure)
 echo -n "Checking Security Isolation (Local-only UI)... "
 # We specifically check Mailpit UI (8025) and MinIO Console (9001)
-# Use awk to check the Local Address column (4th column)
-if netstat -tuln | grep -P ":(8025|9001) " | awk '{print $4}' | grep -qE "^0\.0\.0\.0|^\:\:\:"; then
-    echo -e "${RED}FAILED (Exposed to 0.0.0.0 or :::)${NC}"
-    exit 1
-else
+# Use docker inspect to verify HostIp is 127.0.0.1
+MAILPIT_IP=$(docker inspect wasomi-mailpit --format='{{(index (index .HostConfig.PortBindings "8025/tcp") 0).HostIp}}')
+MINIO_IP=$(docker inspect wasomi-minio --format='{{(index (index .HostConfig.PortBindings "9001/tcp") 0).HostIp}}')
+
+if [[ "$MAILPIT_IP" == "127.0.0.1" && "$MINIO_IP" == "127.0.0.1" ]]; then
     echo -e "${GREEN}OK (Bound to localhost)${NC}"
+else
+    echo -e "${RED}FAILED (Exposure detected: Mailpit=$MAILPIT_IP, MinIO=$MINIO_IP)${NC}"
+    exit 1
 fi
 
 echo -e "\n${GREEN}Infrastructure is SECURE and FULLY FUNCTIONAL!${NC}"
